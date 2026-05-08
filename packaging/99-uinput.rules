@@ -1,0 +1,13 @@
+# Example udev rule for /dev/uinput access.
+#
+# This is useful for a user service setup. For a root systemd service, you do
+# not usually need this rule.
+#
+# Install:
+#   sudo cp packaging/99-uinput.rules /etc/udev/rules.d/99-uinput.rules
+#   sudo usermod -aG input $USER
+#   sudo udevadm control --reload-rules
+#   sudo udevadm trigger
+#   reboot
+
+KERNEL=="uinput", MODE="0660", GROUP="input", OPTIONS+="static_node=uinput"

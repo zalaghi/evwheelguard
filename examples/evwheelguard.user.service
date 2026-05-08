@@ -1,0 +1,22 @@
+# Example user systemd service for evwheelguard.
+#
+# This requires your user to have read access to the input event device and
+# write access to /dev/uinput. Many users should prefer the root system service.
+#
+# Install:
+#   mkdir -p ~/.config/systemd/user
+#   cp examples/evwheelguard.user.service ~/.config/systemd/user/evwheelguard.service
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now evwheelguard.service
+
+[Unit]
+Description=evwheelguard scroll-wheel stabilizer user service
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/evwheelguard --device /dev/input/event4 --lock-ms 140 --scroll-mult 2 --name "evwheelguard filtered mouse"
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target

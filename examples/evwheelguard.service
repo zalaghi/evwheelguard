@@ -1,0 +1,22 @@
+# Example root systemd service for evwheelguard.
+#
+# Install:
+#   sudo cp examples/evwheelguard.service /etc/systemd/system/evwheelguard.service
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now evwheelguard.service
+#
+# IMPORTANT:
+# Edit ExecStart before enabling. Prefer a stable /dev/input/by-id/... path.
+
+[Unit]
+Description=evwheelguard scroll-wheel stabilizer
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/evwheelguard --device /dev/input/event4 --lock-ms 140 --scroll-mult 2 --name "evwheelguard filtered mouse"
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

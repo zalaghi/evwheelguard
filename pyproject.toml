@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "evwheelguard"
+version = "0.1.0"
+description = "Linux userspace scroll-wheel stabilizer for noisy or reversed wheel events"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+  {name = "evwheelguard contributors"}
+]
+keywords = ["linux", "evdev", "uinput", "mouse", "scroll", "wheel", "wayland", "logitech"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: End Users/Desktop",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Desktop Environment",
+  "Topic :: System :: Hardware",
+  "Topic :: Utilities",
+]
+dependencies = [
+  "evdev>=1.6"
+]
+
+[project.urls]
+Homepage = "https://github.com/YOUR_USERNAME/evwheelguard"
+Issues = "https://github.com/YOUR_USERNAME/evwheelguard/issues"
+
+[project.scripts]
+evwheelguard = "evwheelguard.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
