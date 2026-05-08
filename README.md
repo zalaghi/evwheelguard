@@ -10,6 +10,51 @@ The original test case was a Logitech G Pro X / G Pro X Superlight-style LIGHTSP
 
 ---
 
+## One-command install
+
+For the default Logitech PRO X / G Pro X Superlight-style setup:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/evwheelguard/main/install.sh | sudo bash
+```
+
+With explicit tuning:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/evwheelguard/main/install.sh | sudo bash -s -- \
+  --device-name "Logitech PRO X" \
+  --lock-ms 140 \
+  --scroll-mult 2
+```
+
+This installs dependencies, clones the repository to `/opt/evwheelguard`, creates `/usr/local/bin/evwheelguard`, writes `/etc/evwheelguard/config`, installs a root systemd service, enables it at boot, and starts it immediately.
+
+Check status:
+
+```bash
+systemctl status evwheelguard.service --no-pager
+journalctl -u evwheelguard.service -n 80 --no-pager
+```
+
+Change tuning after installation:
+
+```bash
+sudoedit /etc/evwheelguard/config
+sudo systemctl restart evwheelguard.service
+```
+
+Uninstall:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/evwheelguard/main/uninstall.sh | sudo bash
+```
+
+### Maintainer note
+
+Before publishing your fork/repository, replace `YOUR_USERNAME` in `README.md` and `install.sh` with your GitHub username or organization.
+
+---
+
 ## The problem
 
 Some mice emit short opposite-direction wheel events on Linux. A common symptom:
