@@ -72,19 +72,6 @@ if [[ "${EUID}" -ne 0 ]]; then
   exit 1
 fi
 
-if [[ "$REPO_URL" == *"zalaghi"* ]]; then
-  cat >&2 <<'EOF'
-Error: install.sh still has the placeholder GitHub URL.
-
-Maintainer fix before publishing:
-  edit DEFAULT_REPO_URL in install.sh and replace zalaghi with your GitHub username.
-
-Temporary user workaround:
-  pass --repo https://github.com/zalaghi/evwheelguard.git
-EOF
-  exit 1
-fi
-
 if [[ -z "$DEVICE" && -z "$DEVICE_NAME" ]]; then
   echo "Error: set either --device or --device-name." >&2
   exit 1
