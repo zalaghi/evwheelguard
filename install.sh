@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-DEFAULT_REPO_URL="https://github.com/YOUR_USERNAME/evwheelguard.git"
+DEFAULT_REPO_URL="https://github.com/zalaghi/evwheelguard.git"
 REPO_URL="${EVWHEELGUARD_REPO:-$DEFAULT_REPO_URL}"
 BRANCH="${EVWHEELGUARD_BRANCH:-main}"
 INSTALL_DIR="/opt/evwheelguard"
@@ -20,10 +20,10 @@ usage() {
 evwheelguard installer
 
 Usage:
-  curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/evwheelguard/main/install.sh | sudo bash
+  curl -fsSL https://raw.githubusercontent.com/zalaghi/evwheelguard/main/install.sh | sudo bash
 
 Common tuning:
-  curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/evwheelguard/main/install.sh | sudo bash -s -- \
+  curl -fsSL https://raw.githubusercontent.com/zalaghi/evwheelguard/main/install.sh | sudo bash -s -- \
     --device-name "Logitech PRO X" --lock-ms 140 --scroll-mult 2
 
 Options:
@@ -68,19 +68,19 @@ done
 
 if [[ "${EUID}" -ne 0 ]]; then
   echo "Error: run this installer as root. Example:" >&2
-  echo "  curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/evwheelguard/main/install.sh | sudo bash" >&2
+  echo "  curl -fsSL https://raw.githubusercontent.com/zalaghi/evwheelguard/main/install.sh | sudo bash" >&2
   exit 1
 fi
 
-if [[ "$REPO_URL" == *"YOUR_USERNAME"* ]]; then
+if [[ "$REPO_URL" == *"zalaghi"* ]]; then
   cat >&2 <<'EOF'
 Error: install.sh still has the placeholder GitHub URL.
 
 Maintainer fix before publishing:
-  edit DEFAULT_REPO_URL in install.sh and replace YOUR_USERNAME with your GitHub username.
+  edit DEFAULT_REPO_URL in install.sh and replace zalaghi with your GitHub username.
 
 Temporary user workaround:
-  pass --repo https://github.com/YOUR_USERNAME/evwheelguard.git
+  pass --repo https://github.com/zalaghi/evwheelguard.git
 EOF
   exit 1
 fi
@@ -198,7 +198,7 @@ echo "[evwheelguard] Installing systemd service..."
 cat > /etc/systemd/system/evwheelguard.service <<'SH_SYSTEMD'
 [Unit]
 Description=evwheelguard scroll-wheel stabilizer
-Documentation=https://github.com/YOUR_USERNAME/evwheelguard
+Documentation=https://github.com/zalaghi/evwheelguard
 After=multi-user.target systemd-udev-settle.service
 Wants=systemd-udev-settle.service
 
@@ -213,7 +213,7 @@ WantedBy=multi-user.target
 SH_SYSTEMD
 
 # Replace placeholder in local unit docs if possible.
-sed -i "s#https://github.com/YOUR_USERNAME/evwheelguard#$REPO_URL#g" /etc/systemd/system/evwheelguard.service || true
+sed -i "s#https://github.com/zalaghi/evwheelguard#$REPO_URL#g" /etc/systemd/system/evwheelguard.service || true
 
 systemctl daemon-reload
 

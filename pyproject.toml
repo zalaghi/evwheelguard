@@ -32,8 +32,8 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/YOUR_USERNAME/evwheelguard"
-Issues = "https://github.com/YOUR_USERNAME/evwheelguard/issues"
+Homepage = "https://github.com/zalaghi/evwheelguard"
+Issues = "https://github.com/zalaghi/evwheelguard/issues"
 
 [project.scripts]
 evwheelguard = "evwheelguard.cli:main"

@@ -49,6 +49,12 @@ Uninstall:
 curl -fsSL https://raw.githubusercontent.com/zalaghi/evwheelguard/main/uninstall.sh | sudo bash
 ```
 
+### Maintainer note
+
+This package is preconfigured for `https://github.com/zalaghi/evwheelguard`.
+
+---
+
 ## The problem
 
 Some mice emit short opposite-direction wheel events on Linux. A common symptom:
