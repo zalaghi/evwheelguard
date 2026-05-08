@@ -15,13 +15,13 @@ The original test case was a Logitech G Pro X / G Pro X Superlight-style LIGHTSP
 For the default Logitech PRO X / G Pro X Superlight-style setup:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/evwheelguard/main/install.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/zalaghi/evwheelguard/main/install.sh | sudo bash
 ```
 
 With explicit tuning:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/evwheelguard/main/install.sh | sudo bash -s -- \
+curl -fsSL https://raw.githubusercontent.com/zalaghi/evwheelguard/main/install.sh | sudo bash -s -- \
   --device-name "Logitech PRO X" \
   --lock-ms 140 \
   --scroll-mult 2
@@ -46,14 +46,8 @@ sudo systemctl restart evwheelguard.service
 Uninstall:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/evwheelguard/main/uninstall.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/zalaghi/evwheelguard/main/uninstall.sh | sudo bash
 ```
-
-### Maintainer note
-
-Before publishing your fork/repository, replace `YOUR_USERNAME` in `README.md` and `install.sh` with your GitHub username or organization.
-
----
 
 ## The problem
 
@@ -210,7 +204,7 @@ sudo evwheelguard --device /dev/input/event4 --dry-run --debug
 Clone the repository and install it editable:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/evwheelguard.git
+git clone https://github.com/zalaghi/evwheelguard.git
 cd evwheelguard
 python3 -m pip install --user -e .
 ```
